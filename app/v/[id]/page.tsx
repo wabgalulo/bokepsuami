@@ -40,7 +40,7 @@ export async function generateMetadata(
     }
 
     const file = data.result[0];
-    const title = `${file.title} - ${SITENAME}`;
+    const title = `${file.title}`;
     const description = `${file.title} di ${SITENAME} Video Bokep Indo Jepang Jav Barat Simontok Viral Terbaru Bocil Ngentot Jilbab Smp Mama Sma`;
     const image = file.splash_img;
     const previousOgImages = (await parent).openGraph?.images || [];
@@ -82,32 +82,12 @@ export default async function Video({ params }: PageProps) {
     }
 
     const file = data.result[0];
-const jsonLd = {
+	const jsonLd = {
         '@context': 'https://schema.org',
-        '@type': 'VideoObject',
-        name: `${file.title} - ${SITENAME}`,
-        thumbnailUrl: file.splash_img,
-        description: `${file.title} di ${SITENAME} Video Bokep Indo Jepang Jav Barat Simontok Viral Terbaru Bocil Ngentot Jilbab Smp Mama Sma`,
-        url: `https://bokepsuami.pages.dev/v/${file.filecode}`,
-        embedUrl: `https://${upstream}/e/${file.filecode}`,
-        uploadDate: new Date(
-            file.uploaded + ".000Z"
-        ).toISOString(),
-        interactionStatistic: {
-            '@type': `InteractionCounter`,
-                userInteractionCount: `${file.views}`,
-            interactionType: {
-                '@type': `WatchAction`,
-                target: `https://bokepsuami.pages.dev/v/${file.filecode}`
-            }  
-        }
-        }
-        const jsonLd2 = {
-        '@context': 'https://schema.org',
-        '@type': 'Article',
-        headline: `${file.title} - ${SITENAME}`,
+        '@type': 'WebPage',
+        name: `Bokep ${file.title}`,
         image: file.splash_img,
-        description: `${file.title} di ${SITENAME} Video Bokep Indo Jepang Jav Barat Simontok Viral Terbaru Bocil Ngentot Jilbab Smp Mama Sma`,
+        description: `Video Bokep ${file.title} di ${SITENAME} Video Bokep Indo Jepang Jav Barat Simontok Viral Terbaru Bocil Ngentot Jilbab Smp Mama Sma`,
         url: `https://bokepsuami.pages.dev/v/${file.filecode}`,
         datePublished: new Date(
             file.uploaded + ".000Z"
@@ -120,31 +100,41 @@ const jsonLd = {
                 '@type': 'Person',
                 name: 'admin',
                 url: 'https://bokepsuami.pages.dev'
-              },
-        interactionStatistic: {
-            '@type': `InteractionCounter`,
-                userInteractionCount: `${file.views}`,
-            interactionType: {
-                '@type': `ReadAction`,
-                target: `https://bokepsuami.pages.dev/v/${file.filecode}`
-            }  
+              }
         }
+        const jsonLd2 = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: `Bokep ${file.title}`,
+        image: file.splash_img,
+        description: `Video Bokep ${file.title} di ${SITENAME} Video Bokep Indo Jepang Jav Barat Simontok Viral Terbaru Bocil Ngentot Jilbab Smp Mama Sma`,
+        url: `https://bokepsuami.pages.dev/v/${file.filecode}`,
+        datePublished: new Date(
+            file.uploaded + ".000Z"
+        ).toISOString(),
+        publisher: {
+            '@type': 'Organization',
+            name: `${SITENAME}`,
+            logo: 'https://bokepsuami.pages.dev/favicon.ico'},
+            author: {
+                '@type': 'Person',
+                name: 'admin',
+                url: 'https://bokepsuami.pages.dev'
+              }
         }
-        const jsonLd3 = {
-            '@context': 'https://schema.org', 
-            '@type': 'Book', 
-            'name': `${file.title} - ${SITENAME}`, 
-            'aggregateRating': {
-            '@type': 'AggregateRating',	
-                'ratingValue': '5',	
-                'ratingCount': `${file.views}`,	
-                'bestRating': '5',	
-                'worstRating': '1' }
-        }
+        
     return (
-        <div className="grid col-span-full gap-4 md:gap-4 md:mx-10">
+        <div className="grid col-span-full gap-4 md:gap-4 md:mx-10" itemProp="video" itemScope itemType="http://schema.org/VideoObject">
+<meta itemProp="author" content="admin" />
+<meta itemProp="name" content={`${file.title}`} />
+<meta itemProp="description" content={`Video Bokep ${file.title} di ${SITENAME} Video Bokep Indo Jepang Jav Barat Simontok Viral Terbaru Bocil Ngentot Jilbab Smp Mama Sma`} />
+<meta itemProp="duration" content={`${file.length}`} />
+<meta itemProp="thumbnailUrl" content={`${file.splash_img}`} />
+<meta itemProp="embedURL" content={`https://doodstream.com/e/${file.filecode}`} />
+<meta itemProp="uploadDate" content={`${new Date(
+            file.uploaded + ".000Z"
+        ).toISOString()}`} />
         <section>
-<Script src="https://js.juicyads.com/jp.php?c=947403z2v256s2x2x294z2b4&u=http%3A%2F%2Fwww.juicyads.rocks"/>
         {/* Add JSON-LD to your page */}
         <script
           type="application/ld+json"
@@ -154,15 +144,12 @@ const jsonLd = {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd2) }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd3) }}
-        />
         {/* ... */}
         </section>
+<Script src="https://js.juicyads.com/jp.php?c=947403z2v256s2x2x294z2b4&u=http%3A%2F%2Fwww.juicyads.rocks"/>
             <iframe
                 className="w-full h-[30vh] md:h-[55vh] lg:h-[70vh]"
-                src={`https://${upstream}/e/${file.filecode}`}
+                src={`https://doodstream.com/e/${file.filecode}`}
                 scrolling="no"
                 title={file.title}
                 frameBorder={0}
